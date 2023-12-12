@@ -22,7 +22,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
 }
 
 .top-nav input {
@@ -34,8 +36,8 @@ body {
 }
 
 .intro-text {
-    display: grid;
-    margin-right: 10%;
+    display: flex;
+    margin-left: 2%;
 }
 
 text{
@@ -44,7 +46,8 @@ text{
 
 h1 {
     color: #CC9C1F;
-    font-weight: 300;
+    font-weight: 400;
+    margin-bottom: 0px;
 }
 
 h2 {
