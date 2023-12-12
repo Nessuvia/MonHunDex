@@ -2,6 +2,15 @@ body {
     display: grid;
     background: #282828 url("/static/img/mhworld_logo_shadow.png") center no-repeat;
     background-attachment: fixed;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 100,
+    'GRAD' 0,
+    'opsz' 24
 }
 
 .top-nav {
@@ -20,23 +29,43 @@ body {
 }
 
 .top-nav a img {
-    max-block-size: 60px;
+    block-size: 60px;
 }
 
-.intro-text {
+.top-nav a i {
+    color: #FFF;
+    font-size: 60px;
+    block-size: 60px;
+}
+
+div {
     display: grid;
     margin-left: 2%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1 {
+.home-page-text h1 {
     color: #CC9C1F;
     font-weight: 400;
     margin-bottom: 0%;
 }
 
-h2 {
+.home-page-text h2 {
     color: #FFF;
     font-weight: 100;
     margin-top: 0%;
+}
+
+.weapon-page-text h1 {
+    color: #FFF;
+    font-weight: 400;
+    margin-bottom: 0%;
+}
+
+.weapon-page-text h1 span {
+    color: #FFF;
+    transition: 500ms;
+}
+
+.weapon-page-text h1:hover span {
+    transform: rotate(180deg);
 }
