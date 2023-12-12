@@ -36,21 +36,19 @@ body {
 }
 
 .intro-text {
-    display: flex;
+    display: grid;
     margin-left: 2%;
-}
-
-text{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
     color: #CC9C1F;
     font-weight: 400;
-    margin-bottom: 0px;
+    margin-bottom: 0%;
 }
 
 h2 {
     color: #FFF;
     font-weight: 100;
+    margin-top: 0%;
 }
