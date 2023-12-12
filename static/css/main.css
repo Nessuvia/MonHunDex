@@ -1,7 +1,7 @@
 body {
     display: grid;
-    background: #282828 url("/static/img/mhworld_logo_shadow.png") 50% -50% no-repeat; /* This is some jank */
-    background-size: 30%;
+    background: #282828 url("/static/img/mhworld_logo_shadow.png") center no-repeat;
+    background-attachment: fixed;
 }
 
 .top-nav {
