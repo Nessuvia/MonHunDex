@@ -7,12 +7,16 @@
         <meta name="description" content="An index of information for Monster Hunter World.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/static/css/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     </head>
     <body>
         <div class="top-nav">
+            <a href="{{ url_for('index') }}">
+                <i class="material-symbols-outlined">home</i>
+            </a>  
             <a href="{{ url_for('weapons') }}">
                 <img src="{{ url_for('static', filename='img/mhw_icons/greatsword.png') }}" alt="Weapons">
-            </a>
+            </a>          
             <a href="{{ url_for('weapons') }}">
                 <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
             </a>
