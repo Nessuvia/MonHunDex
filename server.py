@@ -7,5 +7,9 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html")
 
+@app.route("/weapons") 
+def weapons(): 
+    return render_template("weapons.html") 
+
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
