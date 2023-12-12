@@ -10,18 +10,24 @@
     </head>
     <body>
         <div class="top-nav">
-            <input type="image" src="/static/img/mhw_icons/greatsword.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
+            <a href="{{ url_for('weapons') }}">
+                <img src="{{ url_for('static', filename='img/mhw_icons/greatsword.png') }}" alt="Weapons">
+            </a>
+            <a href="{{ url_for('weapons') }}">
+                <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
+            </a>
+            <a href="{{ url_for('weapons') }}">
+                <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
+            </a>
+            <a href="{{ url_for('weapons') }}">
+                <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
+            </a>
+            <a href="{{ url_for('weapons') }}">
+                <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
+            </a>
+            <a href="{{ url_for('weapons') }}">
+                <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
+            </a>
         </div>
         
         {% block content %}{% endblock %}
