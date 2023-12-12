@@ -1,46 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MonHunDex</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/static/css/main.css">
-    </head>
-    <body>
-        <div class="top-nav">
-            <input type="image" src="/static/img/mhw_icons/greatsword.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-            <input type="image" src="/static/img/placeholder.png"/>
-        </div>
+{% extends 'base.html' %}
 
-        <div class="intro-text">
-            <p>
-                <h1>
-                    Welcome to MonHunDex for Monster Hunter: World!
-                </h1>
-                <h2>
-                    Click any tab above to search the index.
-                </h2>    
-            </p>
-        </div>
+{% block content %}
 
-        <!-- Removing the bg image while I think of a better solution
-        <div id="bg-image">
-            <img src="/static/img/mhworld_logo.png" alt="Monster Hunter World logo">
-        </div>   
-        -->
-        <script src="" async defer></script>
-    </body>
-</html>
+<div class="intro-text">
+    <h1> Welcome to MonHunDex for Monster Hunter: World! </h1>
+    <h2> Click any tab above to search the index. </h2>
+</div>
 
+{% endblock %}
