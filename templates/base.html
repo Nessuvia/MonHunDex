@@ -12,10 +12,10 @@
     <body>
         <div class="top-nav">
             <a href="{{ url_for('index') }}">
-                <i class="material-symbols-outlined">home</i>
+                <div class="icons" id="home-icon"></div>
             </a>  
             <a href="{{ url_for('weapons') }}">
-                <img src="{{ url_for('static', filename='img/mhw_icons/greatsword.png') }}" alt="Weapons">
+                <div class="icons" id="weapons-icon"></div>
             </a>          
             <a href="{{ url_for('weapons') }}">
                 <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="Armor">
