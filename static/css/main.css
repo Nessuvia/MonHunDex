@@ -5,14 +5,6 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 100,
-    'GRAD' 0,
-    'opsz' 24
-}
-
 .top-nav {
     display: flex;
     align-items: center;
@@ -28,14 +20,20 @@ body {
     padding-right: 4px;
 }
 
-.top-nav a img {
-    block-size: 60px;
+.top-nav .icons {
+    background: url("/static/img/sprite_table_2.png") no-repeat;
+    height: 64px;
+    width: 64px;
+    block-size: 64px;
 }
 
-.top-nav a i {
-    color: #FFF;
-    font-size: 60px;
-    block-size: 60px;
+.top-nav #home-icon {
+    background: url("/static/img/sprite_table_1.png") no-repeat;
+    background-position: -192px -192px;
+}
+
+.top-nav #weapons-icon {
+    background-position: -64px -960px;
 }
 
 div {
@@ -55,17 +53,25 @@ div {
     margin-top: 0%;
 }
 
-.weapon-page-text h1 {
+.weapon-page-dropdown h1 {
     color: #FFF;
     font-weight: 400;
     margin-bottom: 0%;
 }
 
-.weapon-page-text h1 span {
+.weapon-page-dropdown h1 span {
     color: #FFF;
     transition: 500ms;
 }
 
-.weapon-page-text h1:hover span {
+.weapon-page-dropdown h1:hover span {
     transform: rotate(180deg);
+}
+
+#dropdownContent {
+    display: none;
+}
+
+#dropdownContent:hover {
+    display: block;
 }
