@@ -2,10 +2,17 @@
 
 {% block content %}
 
-<div class="weapon-page-text">
-    <h1> Sort by 
+<div class="weapon-page-dropdown">
+
+    <h1 onclick="show_hide()">Sort by 
         <span class="material-symbols-outlined">arrow_drop_down</span>
     </h1>
+
+    <div class="weapon-dropdown-content" id="dropdownContent">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+    </div>
 </div>
 
 {% endblock %}
