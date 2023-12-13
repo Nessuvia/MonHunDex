@@ -71,7 +71,3 @@ div {
 #dropdownContent {
     display: none;
 }
-
-#dropdownContent:hover {
-    display: block;
-}
