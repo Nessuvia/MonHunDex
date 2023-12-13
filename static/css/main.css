@@ -27,13 +27,38 @@ body {
     block-size: 64px;
 }
 
+/** First number is up/down, second number is left and right 
+    Sometimes this isn't true and I don't know why. **/
 .top-nav #home-icon {
-    background: url("/static/img/sprite_table_1.png") no-repeat;
-    background-position: -192px -192px;
+    background-position: -192px -320px;
 }
 
 .top-nav #weapons-icon {
     background-position: -64px -960px;
+}
+
+.top-nav #armor-icon {
+    background-position: -384px -896px;
+}
+
+.top-nav #charms-icon {
+    background-position: -320px -896px;
+}
+
+.top-nav #decos-icon {
+    background-position: -512px -256px;
+}
+
+.top-nav #items-icon {
+    background-position: 0px 0px;
+}
+
+.top-nav #monsters-icon {
+    background-position: -196px -704px;
+}
+
+.top-nav #mantles-icon {
+    background-position: 0px -448px;
 }
 
 div {
