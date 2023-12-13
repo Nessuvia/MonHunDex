@@ -28,38 +28,16 @@ body {
 }
 
 /** First number is up/down, second number is left and right 
-    Sometimes this isn't true and I don't know why. **/
-.top-nav #home-icon {
-    background-position: -192px -320px;
-}
-
-.top-nav #weapons-icon {
-    background-position: -64px -960px;
-}
-
-.top-nav #armor-icon {
-    background-position: -384px -896px;
-}
-
-.top-nav #charms-icon {
-    background-position: -320px -896px;
-}
-
-.top-nav #decos-icon {
-    background-position: -512px -256px;
-}
-
-.top-nav #items-icon {
-    background-position: 0px 0px;
-}
-
-.top-nav #monsters-icon {
-    background-position: -196px -704px;
-}
-
-.top-nav #mantles-icon {
-    background-position: 0px -448px;
-}
+    Sometimes this isn't true and I don't know why. 
+    Styles have been shortened for ease of reading. **/
+    #home-icon { background-position: -192px -320px; }
+    #weapons-icon { background-position: -64px -960px; }
+    #armor-icon { background-position: -384px -896px; }
+    #charms-icon { background-position: -320px -896px; }
+    #decos-icon { background-position: -512px -256px; }
+    #items-icon { background-position: 0px 0px; }
+    #monsters-icon { background-position: -196px -704px; }
+    #mantles-icon { background-position: 0px -448px; }
 
 div {
     display: grid;
