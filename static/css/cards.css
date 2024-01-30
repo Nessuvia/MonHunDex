@@ -1,0 +1,28 @@
+#weapon_container {
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#now_loading {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 3px;
+    width: 200px;
+    background-color: #a7a7a7;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.card p {
+    margin: 10px 0;
+}

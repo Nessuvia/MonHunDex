@@ -1,13 +1,70 @@
-document.addEventListener("DOMContentLoaded", function() {
-    function show_hide() {
-        var click = document.getElementById("dropdownContent");
-        if (click.style.display === "none" || click.style.display === "") {
-            click.style.display = "block";
-        } else {
-            click.style.display = "none";
-        }
+const apiURL = `https://mhw-db.com/weapons`;
+
+/**
+ * Method to get info. from MHW-db and get weapons
+ */
+async function getWeapons(weaponType) {
+
+    let currentURL = apiURL;
+    if (weaponType) {
+        currentURL = `${apiURL}?q={"type":"${weaponType}"}`
     }
 
-    // Add event listener to the button
-    document.getElementById("sortButton").addEventListener("click", show_hide);
-});
+    try {
+        const response = await fetch(currentURL);
+        if (response.ok) {
+            const data = await response.json();
+            console.log(`Received response: ${response.status}`);
+            return data;
+        } else {
+            console.log(`Error, no response. Status: ${response.status}`);
+        }
+    } catch (error) {
+        console.error(`Error fetching data: ${error}`);
+    }
+}
+
+/**
+ * TO-DO: Method to create weapon cards with information from getWeapons
+ */
+async function loadCards(weaponType) {
+
+    const weapon_container = document.getElementById('weapon_container');
+    const now_loading = document.getElementById('now_loading');
+    const data = await getWeapons(weaponType);
+
+    if (!data) {
+        return;
+    }
+
+    console.log(data[0]);
+
+    data.forEach(item => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const title = document.createElement('h2');
+        title.textContent = item.name;
+
+        const type = document.createElement('p');
+        type.textContent = `Type: ${item.type}`;
+
+        const rarity = document.createElement('p');
+        rarity.textContent = `Rarity: ${item.rarity}`;
+
+        const attack = document.createElement('p');
+        attack.textContent = `Attack: ${item.attack.display}`;
+
+        card.appendChild(title);
+        card.appendChild(type);
+        card.appendChild(rarity);
+        card.appendChild(attack);
+
+        weapon_container.appendChild(card);
+    });
+    weapon_container.style.display = "flex"; 
+    now_loading.style.display = "none";
+}
+
+// Call the functions (testing)
+loadCards();

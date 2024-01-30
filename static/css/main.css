@@ -1,76 +1,60 @@
 body {
-    display: grid;
-    background: #282828 url("/static/img/mhworld_logo_shadow.png") center no-repeat;
-    background-attachment: fixed;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.top-nav {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
+    flex-direction: column;
+    background: #1f1c1c;
 }
 
-.top-nav a {
-    display: grid;
-    padding-left: 4px;
-    padding-right: 4px;
+#title_name {
+    text-align: center;
+    font-size: 24px;
+    color: #dadada;
+    margin-bottom: 8px;
 }
 
-.top-nav .icons {
+#search {
+    background-color: #1f1c1c;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#search_bar {
+    color:#dadada;
+    background-color: #3a3535;
+    width: 50%;
+}
+
+#search_bar::placeholder {
+    text-align: center;
+    color: #838383;
+}
+
+.icon_container {
+    display: flex;
+    flex-direction: row;
+    block-size: 64px;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.weapon_icons {
     background: url("/static/img/sprite_table_2.png") no-repeat;
     height: 64px;
     width: 64px;
-    block-size: 64px;
 }
 
-/** First number is up/down, second number is left and right 
-    Sometimes this isn't true and I don't know why. 
-    Styles have been shortened for ease of reading. **/
-    #home-icon { background-position: -192px -320px; }
-    #weapons-icon { background-position: -64px -960px; }
-    #armor-icon { background-position: -384px -896px; }
-    #charms-icon { background-position: -320px -896px; }
-    #decos-icon { background-position: -512px -256px; }
-    #items-icon { background-position: 0px 0px; }
-    #monsters-icon { background-position: -196px -704px; }
-    #mantles-icon { background-position: 0px -448px; }
-
-div {
-    display: grid;
-    margin-left: 2%;
-}
-
-.home-page-text h1 {
-    color: #CC9C1F;
-    font-weight: 400;
-    margin-bottom: 0%;
-}
-
-.home-page-text h2 {
-    color: #FFF;
-    font-weight: 100;
-    margin-top: 0%;
-}
-
-.weapon-page-dropdown h1 {
-    color: #FFF;
-    font-weight: 400;
-    margin-bottom: 0%;
-}
-
-.weapon-page-dropdown h1 span {
-    color: #FFF;
-    transition: 500ms;
-}
-
-.weapon-page-dropdown h1:hover span {
-    transform: rotate(180deg);
-}
-
-#dropdownContent {
-    display: none;
-}
+/** Weapon sprite sheet positions made inline for brevity of code. **/
+.sword_shield { background-position: 0px -960px; }
+.greatsword { background-position: -64px -960px; }
+.longsword { background-position: -128px -960px; }
+.dual_blades { background-position: -192px -960px; }
+.lance { background-position: -256px -960px; }
+.gunlance { background-position: -320px -960px; }
+.hammer { background-position: -384px -960px; }
+.hunting_horn { background-position: -448px -960px; }
+.switch_axe { background-position: -512px -960px; }
+.charge_blade { background-position: -576px -960px; }
+.insect_glaive { background-position: -640px -960px; }
+.light_bg { background-position: -704px -960px; }
+.heavy_bg { background-position: -768px -960px; }
+.bow { background-position: -832px -960px; }
