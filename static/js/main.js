@@ -1,14 +1,16 @@
 const apiURL = `https://mhw-db.com/weapons`;
 
+
 /**
  * TO-DO: Method to pull MHW-db and get all weapons on page loading
  */
 async function getWeapons() {
     try {
         const response = await fetch(apiURL);
-
         if (response.ok) {
+            const data = await response.json();
             console.log(`Received response: ${response.status}`);
+            console.log(`Data:`, data);
         } else {
             console.log(`Error, no response. Status: ${response.status}`);
         }
