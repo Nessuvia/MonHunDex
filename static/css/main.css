@@ -1,3 +1,18 @@
 body {
+    display: flex;
+    flex-direction: column;
     background: #1f1c1c;
+}
+
+#title_name {
+    text-align: center;
+    font-size: 24px;
+    color: #dadada;
+
+    margin-bottom: 8px;
+}
+
+#search {
+    background-color: #1f1c1c;
+    text-align: center;
 }
