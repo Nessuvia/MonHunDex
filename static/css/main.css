@@ -12,20 +12,117 @@ body {
     margin-bottom: 8px;
 }
 
-#search_and_filter {
+#search {
     background-color: #1f1c1c;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
 #search_bar {
+    color:#dadada;
     background-color: #3a3535;
     width: 50%;
 }
 
 #search_bar::placeholder {
-    color: #747474;
+    text-align: center;
+    color: #838383;
 }
 
-#search_and_filter #weapon_icons {
+.weapon_container {
+    display: flex;
     flex-direction: row;
+    block-size: 64px;
+    justify-content: center;
+    
+}
+
+.weapon_icons {
+    background: url("/static/img/sprite_table_2.png") no-repeat;
+    block-size: 64px;
+}
+
+.sword_shield {
+    height: 64px;
+    width: 64px;
+    background-position: 0px -960px;
+}
+
+.greatsword {
+    height: 64px;
+    width: 64px;
+    background-position: -64px -960px;
+}
+
+.longsword {
+    height: 64px;
+    width: 64px;
+    background-position: -128px -960px;
+}
+
+.dual_blades {
+    height: 64px;
+    width: 64px;
+    background-position: -192px -960px;
+}
+
+.lance {
+    height: 64px;
+    width: 64px;
+    background-position: -256px -960px;
+}
+
+.gunlance {
+    height: 64px;
+    width: 64px;
+    background-position: -320px -960px;
+}
+
+.hammer {
+    height: 64px;
+    width: 64px;
+    background-position: -384px -960px;
+}
+
+.hunting_horn {
+    height: 64px;
+    width: 64px;
+    background-position: -448px -960px;
+}
+
+.switch_axe {
+    height: 64px;
+    width: 64px;
+    background-position: -512px -960px;
+}
+
+.charge_blade {
+    height: 64px;
+    width: 64px;
+    background-position: -576px -960px;
+}
+
+.insect_glaive {
+    height: 64px;
+    width: 64px;
+    background-position: -640px -960px;
+}
+
+.light_bg {
+    height: 64px;
+    width: 64px;
+    background-position: -704px -960px;
+}
+
+.heavy_bg {
+    height: 64px;
+    width: 64px;
+    background-position: -768px -960px;
+}
+
+.bow {
+    height: 64px;
+    width: 64px;
+    background-position: -832px -960px;
 }
