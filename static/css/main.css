@@ -12,7 +12,16 @@ body {
     margin-bottom: 8px;
 }
 
-#search {
+#search_and_filter {
     background-color: #1f1c1c;
     text-align: center;
+}
+
+#search_bar {
+    background-color: #3a3535;
+    width: 50%;
+}
+
+#search_bar::placeholder {
+    color: #747474;
 }
