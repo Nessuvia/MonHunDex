@@ -38,7 +38,7 @@ body {
 }
 
 .weapon_icons {
-    background: url("/static/img/sprite_table_2.png") no-repeat;
+    background: url("../img/sprite_table_2.png") no-repeat;
     height: 64px;
     width: 64px;
 }
