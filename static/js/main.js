@@ -25,6 +25,26 @@ async function getWeapons(weaponType) {
 }
 
 /**
+ * Credit to stackoverflow for part of this solution
+ * https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+ */
+function typeFix(string) {
+
+    const specialCases = ["great-sword", "long-sword"];
+    let resultString;
+    
+    if (specialCases.includes(string)) {
+        resultString = string.replace(/-/g, '');
+        resultString = resultString.charAt(0).toUpperCase() + resultString.slice(1);
+    } else {
+        resultString = string.replace(/-/g, ' ');
+        resultString = resultString.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+
+    return resultString;
+}
+
+/**
  * TO-DO: Method to create weapon cards with information from getWeapons
  */
 async function loadCards(weaponType) {
@@ -47,7 +67,7 @@ async function loadCards(weaponType) {
         title.textContent = item.name;
 
         const type = document.createElement('p');
-        type.textContent = `Type: ${item.type}`;
+        type.textContent = `Type: ${typeFix(item.type)}`;
 
         const rarity = document.createElement('p');
         rarity.textContent = `Rarity: ${item.rarity}`;
@@ -67,4 +87,4 @@ async function loadCards(weaponType) {
 }
 
 // Call the functions (testing)
-loadCards("bow");
+loadCards();
