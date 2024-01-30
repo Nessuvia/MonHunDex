@@ -1,16 +1,21 @@
 const apiURL = `https://mhw-db.com/weapons`;
 
-
 /**
- * TO-DO: Method to pull MHW-db and get all weapons on page loading
+ * Method to get info. from MHW-db and get weapons
  */
-async function getWeapons() {
+async function getWeapons(weaponType) {
+
+    let currentURL = apiURL;
+    if (weaponType) {
+        currentURL = `${apiURL}?q={"type":"${weaponType}"}`
+    }
+
     try {
-        const response = await fetch(apiURL);
+        const response = await fetch(currentURL);
         if (response.ok) {
             const data = await response.json();
             console.log(`Received response: ${response.status}`);
-            console.log(`Data:`, data);
+            console.log(`Data:`, data[0]);
         } else {
             console.log(`Error, no response. Status: ${response.status}`);
         }
@@ -19,13 +24,9 @@ async function getWeapons() {
     }
 }
 
-// Call the function
-getWeapons();
-
 /**
- * TO-DO: Method to poll MHW-db for selected weapon only
+ * TO-DO: Method to call/create weapon cards with information
  */
 
-/**
- * TO-DO: Method to call weapon cards with information
- */
+// Call the functions (testing)
+getWeapons("bow");
