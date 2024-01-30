@@ -1,5 +1,4 @@
 const apiURL = `https://mhw-db.com/weapons`;
-const weapon_container = document.getElementById('weapon_container');
 
 /**
  * Method to get info. from MHW-db and get weapons
@@ -16,7 +15,7 @@ async function getWeapons(weaponType) {
         if (response.ok) {
             const data = await response.json();
             console.log(`Received response: ${response.status}`);
-            // console.log(`Data:`, data[0]);
+            return data;
         } else {
             console.log(`Error, no response. Status: ${response.status}`);
         }
@@ -26,11 +25,43 @@ async function getWeapons(weaponType) {
 }
 
 /**
- * TO-DO: Method to call/create weapon cards with information
+ * TO-DO: Method to create weapon cards with information from getWeapons
  */
-function loadCards() {
+async function loadCards(weaponType) {
 
+    const weapon_container = document.getElementById('weapon_container');
+    const data = await getWeapons(weaponType);
+
+    if (!data) {
+        return;
+    }
+
+    console.log(data[0]);
+
+    data.forEach(item => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const title = document.createElement('h2');
+        title.textContent = item.name;
+
+        const type = document.createElement('p');
+        type.textContent = `Type: ${item.type}`;
+
+        const rarity = document.createElement('p');
+        rarity.textContent = `Rarity: ${item.rarity}`;
+
+        const attack = document.createElement('p');
+        attack.textContent = `Attack: ${item.attack.display}`;
+
+        card.appendChild(title);
+        card.appendChild(type);
+        card.appendChild(rarity);
+        card.appendChild(attack);
+
+        weapon_container.appendChild(card);
+    });
 }
 
 // Call the functions (testing)
-getWeapons("bow");
+loadCards();
