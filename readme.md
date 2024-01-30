@@ -4,3 +4,5 @@ Monster Hunter Index, MonHunDex, or just MHD is a web-based encyclopedia for Mon
 
 ## Acknowledgements
 Database Docs: https://docs.mhw-db.com/
+
+Palico Loading Gif: © Lieke // Revonlieke (https://www.furaffinity.net/view/25659825/)
