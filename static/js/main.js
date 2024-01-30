@@ -30,6 +30,7 @@ async function getWeapons(weaponType) {
 async function loadCards(weaponType) {
 
     const weapon_container = document.getElementById('weapon_container');
+    const now_loading = document.getElementById('now_loading');
     const data = await getWeapons(weaponType);
 
     if (!data) {
@@ -61,6 +62,8 @@ async function loadCards(weaponType) {
 
         weapon_container.appendChild(card);
     });
+    weapon_container.style.display = "flex"; 
+    now_loading.style.display = "none";
 }
 
 // Call the functions (testing)

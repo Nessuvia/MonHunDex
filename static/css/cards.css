@@ -1,8 +1,14 @@
 #weapon_container {
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#now_loading {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
 }
 
 .card {
