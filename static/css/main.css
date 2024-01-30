@@ -25,3 +25,7 @@ body {
 #search_bar::placeholder {
     color: #747474;
 }
+
+#search_and_filter #weapon_icons {
+    flex-direction: row;
+}
