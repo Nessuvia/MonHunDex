@@ -1,4 +1,5 @@
 const apiURL = `https://mhw-db.com/weapons`;
+const weapon_container = document.getElementById('weapon_container');
 
 /**
  * Method to get info. from MHW-db and get weapons
@@ -15,7 +16,7 @@ async function getWeapons(weaponType) {
         if (response.ok) {
             const data = await response.json();
             console.log(`Received response: ${response.status}`);
-            console.log(`Data:`, data[0]);
+            // console.log(`Data:`, data[0]);
         } else {
             console.log(`Error, no response. Status: ${response.status}`);
         }
@@ -27,6 +28,9 @@ async function getWeapons(weaponType) {
 /**
  * TO-DO: Method to call/create weapon cards with information
  */
+function loadCards() {
+
+}
 
 // Call the functions (testing)
 getWeapons("bow");
