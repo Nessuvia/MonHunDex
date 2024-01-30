@@ -2,12 +2,14 @@ body {
     display: flex;
     flex-direction: column;
     background: #1f1c1c;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #title_name {
     text-align: center;
     font-size: 24px;
-    color: #dadada;
+    color: #CC9C1F;
+    font-weight: 600;
     margin-bottom: 8px;
 }
 
@@ -22,6 +24,7 @@ body {
     color:#dadada;
     background-color: #3a3535;
     width: 50%;
+    height: 30px;
 }
 
 #search_bar::placeholder {

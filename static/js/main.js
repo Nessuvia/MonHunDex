@@ -67,4 +67,4 @@ async function loadCards(weaponType) {
 }
 
 // Call the functions (testing)
-loadCards();
+loadCards("bow");
