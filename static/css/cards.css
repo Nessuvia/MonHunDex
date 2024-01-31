@@ -1,7 +1,6 @@
 #weapon_container {
     display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
 }
 
@@ -11,25 +10,37 @@
 }
 
 .card {
+    display: flex;
+    flex-flow: row wrap;
     border-radius: 5px;
     padding: 10px;
     margin: 3px;
-    width: 300px;
+    max-height: 150px;
+    width: 30%;
     background-color: #313131;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card div {
+    flex-flow: row nowrap;
+    margin: 0px;
+    width: fit-content;
+}
+
+.card div img {
+    max-height: 100px;
+    max-width: 100px;
 }
 
 .card h2 {
     color: #CC9C1F;
     font-size: 18px;
     margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 .card p {
     color: #dadada;
     margin: 2px;
-}
-
-.card img {
-    max-width: 75%;
-    margin: 0px;
 }

@@ -58,6 +58,9 @@ async function loadCards(weaponType) {
     }
 
     data.forEach(item => {
+        const text_container = document.createElement('div');
+        const img_container = document.createElement('div');
+
         const card = document.createElement('div');
         card.classList.add('card');
     
@@ -72,19 +75,22 @@ async function loadCards(weaponType) {
     
         const attack = document.createElement('p');
         attack.textContent = `Attack: ${item.attack.display}`;
-    
+
         const img = document.createElement('img');
         if (item.assets && item.assets.image) {
             img.src = item.assets.image;
         } else {
             img.src = '../static/img/placeholder.png';
         }
+        img_container.appendChild(img);
     
-        card.appendChild(title);
-        card.appendChild(type);
-        card.appendChild(rarity);
-        card.appendChild(attack);
-        card.appendChild(img);
+        text_container.appendChild(title);
+        text_container.appendChild(type);
+        text_container.appendChild(rarity);
+        text_container.appendChild(attack);
+
+        card.appendChild(text_container);
+        card.appendChild(img_container);
     
         weapon_container.appendChild(card);
     });
@@ -94,4 +100,4 @@ async function loadCards(weaponType) {
 }
 
 // Call the functions (testing)
-loadCards("long-sword");
+loadCards();
