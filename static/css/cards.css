@@ -26,5 +26,10 @@
 
 .card p {
     color: #dadada;
-    margin: 10px;
+    margin: 2px;
+}
+
+.card img {
+    max-width: 75%;
+    margin: 0px;
 }

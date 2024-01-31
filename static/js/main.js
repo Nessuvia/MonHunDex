@@ -20,7 +20,7 @@ async function getWeapons(weaponType) {
             console.log(`Error, no response. Status: ${response.status}`);
         }
     } catch (error) {
-        console.error(`Error fetching data: ${error}`);
+        console.error(error);
     }
 }
 
@@ -32,7 +32,7 @@ function typeFix(string) {
 
     const specialCases = ["great-sword", "long-sword"];
     let resultString;
-    
+
     if (specialCases.includes(string)) {
         resultString = string.replace(/-/g, '');
         resultString = resultString.charAt(0).toUpperCase() + resultString.slice(1);
@@ -45,7 +45,7 @@ function typeFix(string) {
 }
 
 /**
- * TO-DO: Method to create weapon cards with information from getWeapons
+ * Method to create weapon cards with information from getWeapons
  */
 async function loadCards(weaponType) {
 
@@ -57,34 +57,41 @@ async function loadCards(weaponType) {
         return;
     }
 
-    console.log(data[0]);
-
     data.forEach(item => {
         const card = document.createElement('div');
         card.classList.add('card');
-
+    
         const title = document.createElement('h2');
         title.textContent = item.name;
-
+    
         const type = document.createElement('p');
         type.textContent = `Type: ${typeFix(item.type)}`;
-
+    
         const rarity = document.createElement('p');
         rarity.textContent = `Rarity: ${item.rarity}`;
-
+    
         const attack = document.createElement('p');
         attack.textContent = `Attack: ${item.attack.display}`;
-
+    
+        const img = document.createElement('img');
+        if (item.assets && item.assets.image) {
+            img.src = item.assets.image;
+        } else {
+            img.src = '../static/img/placeholder.png';
+        }
+    
         card.appendChild(title);
         card.appendChild(type);
         card.appendChild(rarity);
         card.appendChild(attack);
-
+        card.appendChild(img);
+    
         weapon_container.appendChild(card);
     });
+
     weapon_container.style.display = "flex"; 
     now_loading.style.display = "none";
 }
 
 // Call the functions (testing)
-loadCards();
+loadCards("long-sword");
