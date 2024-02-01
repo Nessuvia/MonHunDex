@@ -54,6 +54,7 @@ body {
 .weapon_icons {
     background: url("../img/sprite_table_2.png") no-repeat;
     box-sizing: border-box;
+    cursor: pointer;
     height: 64px;
     width: 64px;
 }
