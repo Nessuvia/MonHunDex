@@ -1,5 +1,5 @@
-// Used on first load to hold selected weapons
-var weaponList = {};
+// Variable for holding selected weapons
+var weaponList = [];
 
 // Variables for each weapon icon
 var sword_shield = document.getElementsByClassName('sword_shield');
@@ -31,6 +31,20 @@ Array.from(weaponButtons).forEach(function(button) {
  */
 function selectWeapon() {
     this.classList.toggle('active');
+
+    var weaponType = this.classList[1];
+
+    // Check if the weapon is already in the weaponList
+    var index = weaponList.indexOf(weaponType);
+
+    if (index !== -1) {
+        weaponList.splice(index, 1);
+    } else {
+        weaponList.push(weaponType);
+    }
+
+    // Call cards to load after each selection
+    loadCards(weaponList);
 }
 
 /**
@@ -42,7 +56,7 @@ async function getWeapons(weaponList) {
     // If weapons are selected, append them to the to query
     if (weaponList && weaponList.length > 0) {
         const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
-        currentURL = `${apiURL}?q={"type":${typeQuery}}`;
+        currentURL = `${currentURL}?q={"type":${typeQuery}}`;
     }
 
     try {
@@ -84,6 +98,14 @@ function typeFix(string) {
 async function loadCards(weaponList) {
     const weapon_container = document.getElementById('weapon_container');
     const now_loading = document.getElementById('now_loading');
+
+    // Clear the content of weapon_container on each load
+    weapon_container.innerHTML = '';
+
+    // Show the loading gif and hide the weapons each time
+    weapon_container.style.display = "none";
+    now_loading.style.display = "flex";
+
     const data = await getWeapons(weaponList);
 
     if (!data) {
@@ -132,5 +154,5 @@ async function loadCards(weaponList) {
     now_loading.style.display = "none";
 };
 
-// Call the function (testing)
-loadCards(weaponList);
+// Call the function with an empty list on page load
+loadCards([]);
