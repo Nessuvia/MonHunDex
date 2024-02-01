@@ -22,8 +22,12 @@ body {
 
 #search_bar {
     color:#dadada;
-    background-color: #3a3535;
-    width: 50%;
+    background: #3a3535;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
     height: 30px;
 }
 
