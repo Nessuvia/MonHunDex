@@ -2,12 +2,14 @@ const apiURL = `https://mhw-db.com/weapons`;
 
 /**
  * Method to get info. from MHW-db and get weapons
+ * https://mhw-db.com/weapons?q={"type":{"$in":["great-sword","bow"]}}
  */
 async function getWeapons(weaponType) {
 
     let currentURL = apiURL;
-    if (weaponType) {
-        currentURL = `${apiURL}?q={"type":"${weaponType}"}`
+    if (weaponType && weaponType.length > 0) {
+        const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponType }));
+        currentURL = `${apiURL}?q={"type":${typeQuery}}`;
     }
 
     try {
