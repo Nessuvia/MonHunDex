@@ -1,26 +1,47 @@
 // Used on first load to hold selected weapons
-const weaponType = {};
+var weaponList = {};
+
+// Variables for each weapon icon
+var sword_shield = document.getElementsByClassName('sword_shield');
+var greatsword = document.getElementsByClassName('greatsword');
+var longsword = document.getElementsByClassName('longsword');
+var dual_blades = document.getElementsByClassName('dual_blades');
+var lance = document.getElementsByClassName('lance');
+var gunlance = document.getElementsByClassName('gunlance');
+var hammer = document.getElementsByClassName('hammer');
+var hunting_horn = document.getElementsByClassName('hunting_horn');
+var switch_axe = document.getElementsByClassName('switch_axe');
+var charge_blade = document.getElementsByClassName('charge_blade');
+var insect_glaive = document.getElementsByClassName('insect_glaive');
+var light_bg = document.getElementsByClassName('light_bg');
+var heavy_bg = document.getElementsByClassName('heavy_bg');
+var bow = document.getElementsByClassName('bow');
+
+// Variable to get all weapons
+var icon_container = document.querySelector('.icon_container');
+
+// Attach an event listener for select weapons
+var weaponButtons = icon_container.getElementsByClassName('weapon_icons');
+Array.from(weaponButtons).forEach(function(button) {
+    button.addEventListener('click', selectWeapon);
+});
 
 /**
  * Method to select one or multiple weapons
  */
-function selectedWeapon(weaponType,weaponClass) {
-
-    const weaponButtons = Array.from(icon_container.children);
-
+function selectWeapon() {
+    this.classList.toggle('active');
 }
-
 
 /**
  * Method to get information from MHW-db
  */
-async function getWeapons(weaponType) {
-
+async function getWeapons(weaponList) {
     let currentURL = `https://mhw-db.com/weapons`;
 
     // If weapons are selected, append them to the to query
-    if (weaponType && weaponType.length > 0) {
-        const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponType }));
+    if (weaponList && weaponList.length > 0) {
+        const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
         currentURL = `${apiURL}?q={"type":${typeQuery}}`;
     }
 
@@ -36,14 +57,13 @@ async function getWeapons(weaponType) {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
 /**
  * Credit to stackoverflow for part of this solution
  * https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
  */
 function typeFix(string) {
-
     const specialCases = ["great-sword", "long-sword"];
     let resultString;
 
@@ -56,16 +76,15 @@ function typeFix(string) {
     }
 
     return resultString;
-}
+};
 
 /**
  * Method to create weapon cards with information from getWeapons
  */
-async function loadCards(weaponType) {
-
+async function loadCards(weaponList) {
     const weapon_container = document.getElementById('weapon_container');
     const now_loading = document.getElementById('now_loading');
-    const data = await getWeapons(weaponType);
+    const data = await getWeapons(weaponList);
 
     if (!data) {
         return;
@@ -109,10 +128,9 @@ async function loadCards(weaponType) {
     
         weapon_container.appendChild(card);
     });
-
     weapon_container.style.display = "flex"; 
     now_loading.style.display = "none";
-}
+};
 
 // Call the function (testing)
-loadCards(weaponType);
+loadCards(weaponList);

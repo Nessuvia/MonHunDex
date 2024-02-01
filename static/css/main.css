@@ -46,10 +46,20 @@ body {
     min-width: 400px;
 }
 
+.icon_container button {
+    background: none;
+    border: none;
+}
+
 .weapon_icons {
     background: url("../img/sprite_table_2.png") no-repeat;
+    box-sizing: border-box;
     height: 64px;
     width: 64px;
+}
+
+.weapon_icons.active {
+    outline: 2px solid #14bb22;
 }
 
 /** Weapon sprite sheet positions made inline for brevity of code. **/
