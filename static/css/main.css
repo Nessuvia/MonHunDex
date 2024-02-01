@@ -63,17 +63,17 @@ body {
 }
 
 /** Weapon sprite sheet positions made inline for brevity of code. **/
-.sword_shield { background-position: 0px -960px; }
-.greatsword { background-position: -64px -960px; }
-.longsword { background-position: -128px -960px; }
-.dual_blades { background-position: -192px -960px; }
+.sword-and-shield { background-position: 0px -960px; }
+.great-sword { background-position: -64px -960px; }
+.long-sword { background-position: -128px -960px; }
+.dual-blades { background-position: -192px -960px; }
 .lance { background-position: -256px -960px; }
 .gunlance { background-position: -320px -960px; }
 .hammer { background-position: -384px -960px; }
-.hunting_horn { background-position: -448px -960px; }
-.switch_axe { background-position: -512px -960px; }
-.charge_blade { background-position: -576px -960px; }
-.insect_glaive { background-position: -640px -960px; }
-.light_bg { background-position: -704px -960px; }
-.heavy_bg { background-position: -768px -960px; }
+.hunting-horn { background-position: -448px -960px; }
+.switch-axe { background-position: -512px -960px; }
+.charge-blade { background-position: -576px -960px; }
+.insect-glaive { background-position: -640px -960px; }
+.light-bowgun { background-position: -704px -960px; }
+.heavy-bowgun { background-position: -768px -960px; }
 .bow { background-position: -832px -960px; }

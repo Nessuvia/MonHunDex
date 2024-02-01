@@ -2,19 +2,19 @@
 var weaponList = [];
 
 // Variables for each weapon icon
-var sword_shield = document.getElementsByClassName('sword_shield');
-var greatsword = document.getElementsByClassName('greatsword');
-var longsword = document.getElementsByClassName('longsword');
-var dual_blades = document.getElementsByClassName('dual_blades');
+var sword_shield = document.getElementsByClassName('sword-and-shield');
+var greatsword = document.getElementsByClassName('great-sword');
+var longsword = document.getElementsByClassName('long-sword');
+var dual_blades = document.getElementsByClassName('dual-blades');
 var lance = document.getElementsByClassName('lance');
 var gunlance = document.getElementsByClassName('gunlance');
 var hammer = document.getElementsByClassName('hammer');
-var hunting_horn = document.getElementsByClassName('hunting_horn');
-var switch_axe = document.getElementsByClassName('switch_axe');
-var charge_blade = document.getElementsByClassName('charge_blade');
-var insect_glaive = document.getElementsByClassName('insect_glaive');
-var light_bg = document.getElementsByClassName('light_bg');
-var heavy_bg = document.getElementsByClassName('heavy_bg');
+var hunting_horn = document.getElementsByClassName('hunting-horn');
+var switch_axe = document.getElementsByClassName('switch-axe');
+var charge_blade = document.getElementsByClassName('charge-blade');
+var insect_glaive = document.getElementsByClassName('insect-glaive');
+var light_bg = document.getElementsByClassName('light-bowgun');
+var heavy_bg = document.getElementsByClassName('heavy-bowgun');
 var bow = document.getElementsByClassName('bow');
 
 // Variable to get all weapons
