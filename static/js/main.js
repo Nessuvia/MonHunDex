@@ -1,12 +1,24 @@
-const apiURL = `https://mhw-db.com/weapons`;
+// Used on first load to hold selected weapons
+const weaponType = {};
 
 /**
- * Method to get info. from MHW-db and get weapons
- * https://mhw-db.com/weapons?q={"type":{"$in":["great-sword","bow"]}}
+ * Method to select one or multiple weapons
+ */
+function selectedWeapon(weaponType,weaponClass) {
+
+    const weaponButtons = Array.from(icon_container.children);
+
+}
+
+
+/**
+ * Method to get information from MHW-db
  */
 async function getWeapons(weaponType) {
 
-    let currentURL = apiURL;
+    let currentURL = `https://mhw-db.com/weapons`;
+
+    // If weapons are selected, append them to the to query
     if (weaponType && weaponType.length > 0) {
         const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponType }));
         currentURL = `${apiURL}?q={"type":${typeQuery}}`;
@@ -78,6 +90,7 @@ async function loadCards(weaponType) {
         const attack = document.createElement('p');
         attack.textContent = `Attack: ${item.attack.display}`;
 
+        // Check to see if image exists, if not use placeholder
         const img = document.createElement('img');
         if (item.assets && item.assets.image) {
             img.src = item.assets.image;
@@ -101,5 +114,5 @@ async function loadCards(weaponType) {
     now_loading.style.display = "none";
 }
 
-// Call the functions (testing)
-loadCards();
+// Call the function (testing)
+loadCards(weaponType);
