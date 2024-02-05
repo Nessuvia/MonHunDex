@@ -2,26 +2,26 @@
 var weaponList = [];
 
 // Variables for each weapon icon
-var sword_shield = document.getElementsByClassName('sword-and-shield');
-var greatsword = document.getElementsByClassName('great-sword');
-var longsword = document.getElementsByClassName('long-sword');
-var dual_blades = document.getElementsByClassName('dual-blades');
-var lance = document.getElementsByClassName('lance');
-var gunlance = document.getElementsByClassName('gunlance');
-var hammer = document.getElementsByClassName('hammer');
-var hunting_horn = document.getElementsByClassName('hunting-horn');
-var switch_axe = document.getElementsByClassName('switch-axe');
-var charge_blade = document.getElementsByClassName('charge-blade');
-var insect_glaive = document.getElementsByClassName('insect-glaive');
-var light_bg = document.getElementsByClassName('light-bowgun');
-var heavy_bg = document.getElementsByClassName('heavy-bowgun');
-var bow = document.getElementsByClassName('bow');
+const sword_shield = document.getElementsByClassName('sword-and-shield');
+const greatsword = document.getElementsByClassName('great-sword');
+const longsword = document.getElementsByClassName('long-sword');
+const dual_blades = document.getElementsByClassName('dual-blades');
+const lance = document.getElementsByClassName('lance');
+const gunlance = document.getElementsByClassName('gunlance');
+const hammer = document.getElementsByClassName('hammer');
+const hunting_horn = document.getElementsByClassName('hunting-horn');
+const switch_axe = document.getElementsByClassName('switch-axe');
+const charge_blade = document.getElementsByClassName('charge-blade');
+const insect_glaive = document.getElementsByClassName('insect-glaive');
+const light_bg = document.getElementsByClassName('light-bowgun');
+const heavy_bg = document.getElementsByClassName('heavy-bowgun');
+const bow = document.getElementsByClassName('bow');
 
 // Variable to get all weapons
-var icon_container = document.querySelector('.icon_container');
+const icon_container = document.querySelector('.icon_container');
 
 // Attach an event listener for select weapons
-var weaponButtons = icon_container.getElementsByClassName('weapon_icons');
+const weaponButtons = icon_container.getElementsByClassName('weapon_icons');
 Array.from(weaponButtons).forEach(function(button) {
     button.addEventListener('click', selectWeapon);
 });
