@@ -65,8 +65,11 @@ async function selectWeapon() {
         currentURL = `${currentURL}?q={"type":${typeQuery}}`;
     }
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    loadCards(currentURL);
+    /**
+     * Call search instead of loadCards to account for if a weapon is selected while there is
+     * something in the search box
+     */
+    search();
 }
 
 /**
@@ -78,16 +81,26 @@ async function search() {
     let currentURL = `https://mhw-db.com/weapons`;
 
     // First check if there's something written in the search bar, and if a weapon type is selected
-    if (searchTerm.value.length > 0 && weaponList.length > 0) {
-        const searchQuery = encodeURIComponent(JSON.stringify({"$like": searchTerm.value}));
-        const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
-        currentURL = `${currentURL}?q={"$and":[{"name":{"$like":${searchQuery}}},{"type":{"$in":[${typeQuery}]}}]}`;
-    // Otherwise only check if the search bar has a value in it
-    } else if (searchTerm.value.length > 0) {
-        const searchQuery = encodeURIComponent(JSON.stringify({"$like": searchTerm.value}));
-        currentURL = `${currentURL}?q={"name":${searchQuery}}`;
-    }
-    
+    if (searchTerm.value.length > 0) {
+        const searchQuery = encodeURIComponent(JSON.stringify({ "$like": `${searchTerm.value}%` }));
+        let query = ''; // Initialize the query string
+
+        // Check if weaponList is not empty, then include type query
+        if (weaponList.length > 0) {
+            const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
+            query = encodeURIComponent(JSON.stringify({
+                "$and": [
+                    { "name": { "$like": `${searchTerm.value}%` } },
+                    { "type": { "$in": weaponList } }
+                ]
+            }));
+        } else { // Otherwise, only include the name query
+            query = encodeURIComponent(JSON.stringify({ "name": { "$like": `${searchTerm.value}%` } }));
+        }
+
+        currentURL = `${currentURL}?q=${query}`;
+    }  
+
     loadCards(currentURL);
 }
 
@@ -150,6 +163,7 @@ async function loadCards(currentURL) {
 
     // If there's no data, display that no results were found
     if (!data) {
+        weapon_container.innerHTML = '';
         weapon_container.append("No results found.");
         weapon_container.style.display = "flex"; 
         now_loading.style.display = "none";
