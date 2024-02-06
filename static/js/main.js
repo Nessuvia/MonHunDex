@@ -31,15 +31,15 @@ Array.from(weaponButtons).forEach(function(button) {
 
 /**
  * Delay function from stackexchange
- * https://stackoverflow.com/questions/1909441/how-to-delay-the-keyup-handler-until-the-user-stops-typing
+ * https://stackoverflow.com/questions/1381751/onkeyup-javascript-time-delay
  */
-function delay(fn, ms) {
-    let timer = 0
-    return function(...args) {
-      clearTimeout(timer)
-      timer = setTimeout(fn.bind(this, ...args), ms || 0)
-    }
-}
+var delay = function(){
+    var timer = 0;
+    return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    }  
+}();
 
 /**
  * Method to select one or multiple weapons
@@ -69,12 +69,23 @@ async function selectWeapon() {
     loadCards(currentURL);
 }
 
+/**
+ * Method to search weapons by name
+ * Example url:
+ * https://mhw-db.com/weapons?q={%22name%22:{%22$like%22:%22Bone%%22}}
+ */
 async function search() {
     let currentURL = `https://mhw-db.com/weapons`;
 
-    if (searchTerm.value.length > 0) {
+    // First check if there's something written in the search bar, and if a weapon type is selected
+    if (searchTerm.value.length > 0 && weaponList.length > 0) {
         const searchQuery = encodeURIComponent(JSON.stringify({"$like": searchTerm.value}));
-        currentURL = `${currentURL}?q={"type":${searchQuery}}`;
+        const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
+        currentURL = `${currentURL}?q={"$and":[{"name":{"$like":${searchQuery}}},{"type":{"$in":[${typeQuery}]}}]}`;
+    // Otherwise only check if the search bar has a value in it
+    } else if (searchTerm.value.length > 0) {
+        const searchQuery = encodeURIComponent(JSON.stringify({"$like": searchTerm.value}));
+        currentURL = `${currentURL}?q={"name":${searchQuery}}`;
     }
     
     loadCards(currentURL);
@@ -82,7 +93,8 @@ async function search() {
 
 /**
  * Method to get information from MHW-db
- * https://mhw-db.com/weapons?q={"$and":[{"name":{"$like":"Bone%"}},{"type":{"$in":["great-sword","bow"]}}]}
+ * Example url:
+ * https://mhw-db.com/weapons?q={%22$and%22:[{%22name%22:{%22$like%22:%22Bone%%22}},{%22type%22:{%22$in%22:[%22great-sword%22,%22bow%22]}}]}
  */
 async function getWeapons(currentURL) {
     try {
@@ -123,7 +135,7 @@ function typeFix(string) {
 /**
  * Method to create weapon cards with information from getWeapons
  */
-async function loadCards(weaponList) {
+async function loadCards(currentURL) {
     const weapon_container = document.getElementById('weapon_container');
     const now_loading = document.getElementById('now_loading');
 
@@ -134,9 +146,13 @@ async function loadCards(weaponList) {
     weapon_container.style.display = "none";
     now_loading.style.display = "flex";
 
-    const data = await getWeapons(weaponList);
+    const data = await getWeapons(currentURL);
 
+    // If there's no data, display that no results were found
     if (!data) {
+        weapon_container.append("No results found.");
+        weapon_container.style.display = "flex"; 
+        now_loading.style.display = "none";
         return;
     }
 
