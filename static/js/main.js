@@ -20,6 +20,9 @@ const bow = document.getElementsByClassName('bow');
 // Variable to get all weapons
 const icon_container = document.querySelector('.icon_container');
 
+// Variable for search bar
+const searchTerm = document.getElementById('search_bar');
+
 // Attach an event listener for select weapons
 const weaponButtons = icon_container.getElementsByClassName('weapon_icons');
 Array.from(weaponButtons).forEach(function(button) {
@@ -27,9 +30,23 @@ Array.from(weaponButtons).forEach(function(button) {
 });
 
 /**
+ * Delay function from stackexchange
+ * https://stackoverflow.com/questions/1909441/how-to-delay-the-keyup-handler-until-the-user-stops-typing
+ */
+function delay(fn, ms) {
+    let timer = 0
+    return function(...args) {
+      clearTimeout(timer)
+      timer = setTimeout(fn.bind(this, ...args), ms || 0)
+    }
+}
+
+/**
  * Method to select one or multiple weapons
  */
-function selectWeapon() {
+async function selectWeapon() {
+    let currentURL = `https://mhw-db.com/weapons`;
+
     this.classList.toggle('active');
 
     var weaponType = this.classList[1];
@@ -43,22 +60,31 @@ function selectWeapon() {
         weaponList.push(weaponType);
     }
 
-    // Call cards to load after each selection
-    loadCards(weaponList);
-}
-
-/**
- * Method to get information from MHW-db
- */
-async function getWeapons(weaponList) {
-    let currentURL = `https://mhw-db.com/weapons`;
-
-    // If weapons are selected, append them to the to query
     if (weaponList && weaponList.length > 0) {
         const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
         currentURL = `${currentURL}?q={"type":${typeQuery}}`;
     }
 
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    loadCards(currentURL);
+}
+
+async function search() {
+    let currentURL = `https://mhw-db.com/weapons`;
+
+    if (searchTerm.value.length > 0) {
+        const searchQuery = encodeURIComponent(JSON.stringify({"$like": searchTerm.value}));
+        currentURL = `${currentURL}?q={"type":${searchQuery}}`;
+    }
+    
+    loadCards(currentURL);
+}
+
+/**
+ * Method to get information from MHW-db
+ * https://mhw-db.com/weapons?q={"$and":[{"name":{"$like":"Bone%"}},{"type":{"$in":["great-sword","bow"]}}]}
+ */
+async function getWeapons(currentURL) {
     try {
         const response = await fetch(currentURL);
         if (response.ok) {
@@ -74,6 +100,8 @@ async function getWeapons(weaponList) {
 };
 
 /**
+ * This simply corrects the display names of each weapon to be capitalized.
+ * 
  * Credit to stackoverflow for part of this solution
  * https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
  */
@@ -155,4 +183,4 @@ async function loadCards(weaponList) {
 };
 
 // Call the function with an empty list on page load
-loadCards([]);
+loadCards(`https://mhw-db.com/weapons`);
