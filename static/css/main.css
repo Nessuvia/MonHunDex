@@ -51,6 +51,11 @@ body {
     border: none;
 }
 
+#weapon_container {
+    margin-top: 10px;
+    color: #dadada;
+}
+
 .weapon_icons {
     background: url("../img/sprite_table_2.png") no-repeat;
     box-sizing: border-box;
