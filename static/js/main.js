@@ -45,8 +45,6 @@ var delay = function(){
  * Method to select one or multiple weapons
  */
 async function selectWeapon() {
-    let currentURL = `https://mhw-db.com/weapons`;
-
     this.classList.toggle('active');
 
     var weaponType = this.classList[1];
@@ -58,11 +56,6 @@ async function selectWeapon() {
         weaponList.splice(index, 1);
     } else {
         weaponList.push(weaponType);
-    }
-
-    if (weaponList && weaponList.length > 0) {
-        const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
-        currentURL = `${currentURL}?q={"type":${typeQuery}}`;
     }
 
     /**
@@ -80,26 +73,23 @@ async function selectWeapon() {
 async function search() {
     let currentURL = `https://mhw-db.com/weapons`;
 
-    // First check if there's something written in the search bar, and if a weapon type is selected
-    if (searchTerm.value.length > 0) {
-        const searchQuery = encodeURIComponent(JSON.stringify({ "$like": `${searchTerm.value}%` }));
-        let query = ''; // Initialize the query string
+    let query = ''; // Initialize the query string
 
-        // Check if weaponList is not empty, then include type query
-        if (weaponList.length > 0) {
-            const typeQuery = encodeURIComponent(JSON.stringify({ "$in": weaponList }));
-            query = encodeURIComponent(JSON.stringify({
-                "$and": [
-                    { "name": { "$like": `${searchTerm.value}%` } },
-                    { "type": { "$in": weaponList } }
-                ]
-            }));
-        } else { // Otherwise, only include the name query
-            query = encodeURIComponent(JSON.stringify({ "name": { "$like": `${searchTerm.value}%` } }));
-        }
+    // Check if weaponList is not empty, then include type query
+    if (weaponList.length > 0 && searchTerm.value.length > 0) {
+        query = encodeURIComponent(JSON.stringify({
+            "$and": [
+                { "name": { "$like": `${searchTerm.value}%` } },
+                { "type": { "$in": weaponList } }
+            ]
+        }));
+    } else if (weaponList.length > 0 && searchTerm.value.length === 0) {
+        query = encodeURIComponent(JSON.stringify({ "type": { "$in": weaponList } }));
+    } else if (weaponList.length == 0 && searchTerm.value.length > 0) {
+        query = encodeURIComponent(JSON.stringify({ "name": { "$like": `${searchTerm.value}%` } }));
+    }
 
-        currentURL = `${currentURL}?q=${query}`;
-    }  
+    currentURL = `${currentURL}?q=${query}`;
 
     loadCards(currentURL);
 }
