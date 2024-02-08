@@ -3,36 +3,37 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>MHW - Weapons</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/icon" href="static/img/favicon.ico"/>
         <link rel="stylesheet" href="static/css/main.css">
         <link rel="stylesheet" href="static/css/cards.css">
     </head>
     <body>
         <div id="title_name">
-            Monster Hunter World - Weapons
+            Monster Hunter: World - Weapons
         </div>
 
         <div id="search">
-            <input id="search_bar" type="search" placeholder="Search...">
+            <input id="search_bar" type="search" placeholder="Search by name..." onkeyup=delay(search,1000);>
         </div>
         
         <div class="icon_container">
-            <div class="weapon_icons sword_shield"></div>
-            <div class="weapon_icons greatsword"></div>
-            <div class="weapon_icons longsword"></div>
-            <div class="weapon_icons dual_blades"></div>
-            <div class="weapon_icons lance"></div>
-            <div class="weapon_icons gunlance"></div>
-            <div class="weapon_icons hammer"></div>
-            <div class="weapon_icons hunting_horn"></div>
-            <div class="weapon_icons switch_axe"></div>
-            <div class="weapon_icons charge_blade"></div>
-            <div class="weapon_icons insect_glaive"></div>
-            <div class="weapon_icons light_bg"></div>
-            <div class="weapon_icons heavy_bg"></div>
-            <div class="weapon_icons bow"></div>
+            <button id="sword_shield"><div class="weapon_icons sword-and-shield"></div></button>
+            <button id="greatsword"><div class="weapon_icons great-sword"></div></button>
+            <button id="longsword"><div class="weapon_icons long-sword"></div></button>
+            <button id="dual_blades"><div class="weapon_icons dual-blades"></div></button>
+            <button id="lance"><div class="weapon_icons lance"></div></button>
+            <button id="gunlance"><div class="weapon_icons gunlance"></div></button>
+            <button id="hammer"><div class="weapon_icons hammer"></div></button>
+            <button id="hunting_horn"><div class="weapon_icons hunting-horn"></div></button>
+            <button id="switch_axe"><div class="weapon_icons switch-axe"></div></button>
+            <button id="charge_blade"><div class="weapon_icons charge-blade"></div></button>
+            <button id="insect_glaive"><div class="weapon_icons insect-glaive"></div></button>
+            <button id="light_bg"><div class="weapon_icons light-bowgun"></div></button>
+            <button id="heavy_bg"><div class="weapon_icons heavy-bowgun"></div></button>
+            <button id="bow"><div class="weapon_icons bow"></div></button>
         </div>
 
         <div id="now_loading"><img src="static/img/dance.gif" alt="Loading"></div>
